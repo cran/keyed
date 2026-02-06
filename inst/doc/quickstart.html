@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Gilles Colling" />
+
+<meta name="date" content="2026-02-03" />
+
+<title>Quick Start</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Quick Start</h1>
+<h4 class="author">Gilles Colling</h4>
+<h4 class="date">2026-02-03</h4>
+
+
+
+<div id="the-problem-silent-data-corruption" class="section level2">
+<h2>The Problem: Silent Data Corruption</h2>
+<p>You receive monthly customer exports from a CRM system. The data
+should have unique <code>customer_id</code> values and complete
+<code>email</code> addresses. One month, someone upstream changes the
+export logic. Now <code>customer_id</code> has duplicates and some
+emails are missing.</p>
+<p><strong>Without explicit checks, you won’t notice until something
+breaks downstream</strong>—wrong row counts after a join, duplicated
+invoices, failed email campaigns.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># January export: clean data</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>january <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="at">customer_id =</span> <span class="fu">c</span>(<span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">103</span>, <span class="dv">104</span>, <span class="dv">105</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="at">email =</span> <span class="fu">c</span>(<span class="st">&quot;alice@example.com&quot;</span>, <span class="st">&quot;bob@example.com&quot;</span>, <span class="st">&quot;carol@example.com&quot;</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>            <span class="st">&quot;dave@example.com&quot;</span>, <span class="st">&quot;eve@example.com&quot;</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="at">segment =</span> <span class="fu">c</span>(<span class="st">&quot;premium&quot;</span>, <span class="st">&quot;basic&quot;</span>, <span class="st">&quot;premium&quot;</span>, <span class="st">&quot;basic&quot;</span>, <span class="st">&quot;premium&quot;</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co"># February export: corrupted upstream (duplicates + missing email)</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>february <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>  <span class="at">customer_id =</span> <span class="fu">c</span>(<span class="dv">101</span>, <span class="dv">102</span>, <span class="dv">102</span>, <span class="dv">104</span>, <span class="dv">105</span>),  <span class="co"># Note: 102 is duplicated</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>  <span class="at">email =</span> <span class="fu">c</span>(<span class="st">&quot;alice@example.com&quot;</span>, <span class="st">&quot;bob@example.com&quot;</span>, <span class="cn">NA</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>            <span class="st">&quot;dave@example.com&quot;</span>, <span class="st">&quot;eve@example.com&quot;</span>),</span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>  <span class="at">segment =</span> <span class="fu">c</span>(<span class="st">&quot;premium&quot;</span>, <span class="st">&quot;basic&quot;</span>, <span class="st">&quot;basic&quot;</span>, <span class="st">&quot;basic&quot;</span>, <span class="st">&quot;premium&quot;</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>)</span></code></pre></div>
+<p>The February data looks fine at a glance:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">head</span>(february)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co">#&gt;   customer_id             email segment</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="co">#&gt; 1         101 alice@example.com premium</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co">#&gt; 2         102   bob@example.com   basic</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co">#&gt; 3         102              &lt;NA&gt;   basic</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co">#&gt; 4         104  dave@example.com   basic</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co">#&gt; 5         105   eve@example.com premium</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="fu">nrow</span>(february)  <span class="co"># Same row count</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+<p>But it will silently corrupt your analysis.</p>
+<hr />
+</div>
+<div id="the-solution-make-assumptions-explicit" class="section level2">
+<h2>The Solution: Make Assumptions Explicit</h2>
+<p><strong>keyed</strong> catches these issues by making your
+assumptions explicit:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Define what you expect: customer_id is unique</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>january_keyed <span class="ot">&lt;-</span> january <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="fu">key</span>(customer_id) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="fu">lock_no_na</span>(email)</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co"># This works - January data is clean</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>january_keyed</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt; # A keyed tibble: 5 x 3</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt; # Key:            customer_id</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt;   customer_id email             segment</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt;         &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;  </span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt; 1         101 alice@example.com premium</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt; 2         102 bob@example.com   basic  </span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt; 3         103 carol@example.com premium</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="co">#&gt; 4         104 dave@example.com  basic  </span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="co">#&gt; 5         105 eve@example.com   premium</span></span></code></pre></div>
+<p>Now try the same with February’s corrupted data:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># This fails immediately - duplicates detected</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>february <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="fu">key</span>(customer_id)</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; Warning: Key is not unique.</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; ℹ 1 duplicate key value(s) found.</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; ℹ Key columns: customer_id</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; # A keyed tibble: 5 x 3</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; # Key:            customer_id</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt;   customer_id email             segment</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt;         &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;  </span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; 1         101 alice@example.com premium</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt; 2         102 bob@example.com   basic  </span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt; 3         102 &lt;NA&gt;              basic  </span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt; 4         104 dave@example.com  basic  </span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt; 5         105 eve@example.com   premium</span></span></code></pre></div>
+<p>The error catches the problem <strong>at import time</strong>, not
+downstream when you’re debugging a mysterious row count mismatch.</p>
+<hr />
+</div>
+<div id="workflow-1-monthly-data-validation" class="section level2">
+<h2>Workflow 1: Monthly Data Validation</h2>
+<p><strong>Goal</strong>: Validate each month’s export against expected
+constraints before processing.</p>
+<p><strong>Challenge</strong>: Data quality varies month-to-month.
+Silent corruption causes cascading errors.</p>
+<p><strong>Strategy</strong>: Define keys and assumptions once, apply
+consistently to each import.</p>
+<div id="define-validation-function" class="section level3">
+<h3>Define validation function</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>validate_customer_export <span class="ot">&lt;-</span> <span class="cf">function</span>(df) {</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>    <span class="fu">key</span>(customer_id) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>    <span class="fu">lock_no_na</span>(email) <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>    <span class="fu">lock_nrow</span>(<span class="at">min =</span> <span class="dv">1</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>}</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co"># January: passes</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>january_clean <span class="ot">&lt;-</span> <span class="fu">validate_customer_export</span>(january)</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="fu">summary</span>(january_clean)</span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt; ── Keyed Data Frame Summary</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; Dimensions: 5 rows x 3 columns</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; Key columns: customer_id</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt; ✔ Key is unique</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt; Row IDs: none</span></span></code></pre></div>
+</div>
+<div id="keys-survive-transformations" class="section level3">
+<h3>Keys survive transformations</h3>
+<p>Once defined, keys persist through dplyr operations:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Filter preserves key</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>premium_customers <span class="ot">&lt;-</span> january_clean <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">filter</span>(segment <span class="sc">==</span> <span class="st">&quot;premium&quot;</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="fu">has_key</span>(premium_customers)</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="fu">get_key_cols</span>(premium_customers)</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co">#&gt; [1] &quot;customer_id&quot;</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co"># Mutate preserves key</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>enriched <span class="ot">&lt;-</span> january_clean <span class="sc">|&gt;</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">domain =</span> <span class="fu">sub</span>(<span class="st">&quot;.*@&quot;</span>, <span class="st">&quot;&quot;</span>, email))</span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="fu">has_key</span>(enriched)</span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+</div>
+<div id="strict-enforcement" class="section level3">
+<h3>Strict enforcement</h3>
+<p>If an operation breaks uniqueness, keyed errors and tells you to use
+<code>unkey()</code> first:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># This creates duplicates - keyed stops you</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>january_clean <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">customer_id =</span> <span class="dv">1</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt; Error in `mutate()`:</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt; ! Key is no longer unique after transformation.</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt; ℹ Use `unkey()` first if you intend to break uniqueness.</span></span></code></pre></div>
+<p>To proceed, you must explicitly acknowledge breaking the key:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>january_clean <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="fu">unkey</span>() <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">customer_id =</span> <span class="dv">1</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 3</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt;   customer_id email             segment</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt;         &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;  </span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt; 1           1 alice@example.com premium</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; 2           1 bob@example.com   basic  </span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt; 3           1 carol@example.com premium</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt; 4           1 dave@example.com  basic  </span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt; 5           1 eve@example.com   premium</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="workflow-2-safe-joins" class="section level2">
+<h2>Workflow 2: Safe Joins</h2>
+<p><strong>Goal</strong>: Join customer data with orders without
+accidentally duplicating rows.</p>
+<p><strong>Challenge</strong>: Join cardinality mistakes are common and
+hard to debug. A “one-to-one” join that’s actually one-to-many silently
+inflates your data.</p>
+<p><strong>Strategy</strong>: Use <code>diagnose_join()</code> to
+understand cardinality <em>before</em> joining.</p>
+<div id="create-sample-data" class="section level3">
+<h3>Create sample data</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>customers <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="at">customer_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Alice&quot;</span>, <span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Carol&quot;</span>, <span class="st">&quot;Dave&quot;</span>, <span class="st">&quot;Eve&quot;</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  <span class="at">tier =</span> <span class="fu">c</span>(<span class="st">&quot;gold&quot;</span>, <span class="st">&quot;silver&quot;</span>, <span class="st">&quot;gold&quot;</span>, <span class="st">&quot;bronze&quot;</span>, <span class="st">&quot;silver&quot;</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  <span class="fu">key</span>(customer_id)</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>orders <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>  <span class="at">order_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>  <span class="at">customer_id =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>  <span class="at">amount =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">125</span>, <span class="dv">300</span>, <span class="dv">80</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>  <span class="fu">key</span>(order_id)</span></code></pre></div>
+</div>
+<div id="diagnose-before-joining" class="section level3">
+<h3>Diagnose before joining</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">diagnose_join</span>(customers, orders, <span class="at">by =</span> <span class="st">&quot;customer_id&quot;</span>, <span class="at">use_joinspy =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="co">#&gt; ── Join Diagnosis</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#&gt; Cardinality: one-to-many</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co">#&gt; x: 5 rows, unique</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co">#&gt; y: 8 rows, 3 duplicates</span></span></code></pre></div>
+<p>The diagnosis shows:</p>
+<ul>
+<li><p><strong>Cardinality is one-to-many</strong>: Each customer can
+have multiple orders</p></li>
+<li><p><strong>Coverage</strong>: Shows how many keys match vs. don’t
+match</p></li>
+</ul>
+<p>Now you know what to expect. A <code>left_join()</code> will create 8
+rows (one per order), not 5 (one per customer).</p>
+</div>
+<div id="compare-key-structures" class="section level3">
+<h3>Compare key structures</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">compare_keys</span>(customers, orders)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co">#&gt; ── Key Comparison</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co">#&gt; Comparing on: customer_id</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co">#&gt; x: 5 unique keys</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co">#&gt; y: 5 unique keys</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co">#&gt; Common: 5 (100.0% of x)</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co">#&gt; Only in x: 0</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="co">#&gt; Only in y: 0</span></span></code></pre></div>
+<p>This shows the join key exists in both tables but with different
+uniqueness properties—essential information before joining.</p>
+<hr />
+</div>
+</div>
+<div id="workflow-3-row-identity-tracking" class="section level2">
+<h2>Workflow 3: Row Identity Tracking</h2>
+<p><strong>Goal</strong>: Track which original rows survive through a
+complex pipeline.</p>
+<p><strong>Challenge</strong>: After filtering, aggregating, and
+joining, you lose track of which source rows contributed to your final
+data.</p>
+<p><strong>Strategy</strong>: Use <code>add_id()</code> to attach stable
+identifiers that survive transformations.</p>
+<div id="add-row-ids" class="section level3">
+<h3>Add row IDs</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Add UUIDs to rows</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>customers_tracked <span class="ot">&lt;-</span> customers <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">add_id</span>()</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>customers_tracked</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co">#&gt; # A keyed tibble: 5 x 4</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co">#&gt; # Key:            customer_id | .id</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co">#&gt;   .id                                  customer_id name  tier  </span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;                                      &lt;int&gt; &lt;chr&gt; &lt;chr&gt; </span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#&gt; 1 e87304fc-09ed-4634-8caa-a9d9cf2352cc           1 Alice gold  </span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#&gt; 2 d4c8b392-666d-43e1-8178-ce8e01efd218           2 Bob   silver</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#&gt; 3 149ca4bd-d304-46a8-822b-fe344600d006           3 Carol gold  </span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co">#&gt; 4 d6031d5d-90eb-44f7-96a8-db4a0ef6da72           4 Dave  bronze</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#&gt; 5 2aad2788-779c-48fb-86de-8dfd71222a2c           5 Eve   silver</span></span></code></pre></div>
+</div>
+<div id="ids-survive-transformations" class="section level3">
+<h3>IDs survive transformations</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Filter: IDs persist</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>gold_customers <span class="ot">&lt;-</span> customers_tracked <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">filter</span>(tier <span class="sc">==</span> <span class="st">&quot;gold&quot;</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="fu">get_id</span>(gold_customers)</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;e87304fc-09ed-4634-8caa-a9d9cf2352cc&quot;</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="co">#&gt; [2] &quot;149ca4bd-d304-46a8-822b-fe344600d006&quot;</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co"># Compare with original</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="fu">compare_ids</span>(customers_tracked, gold_customers)</span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co">#&gt; $lost</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="co">#&gt; [1] &quot;d4c8b392-666d-43e1-8178-ce8e01efd218&quot;</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="co">#&gt; [2] &quot;d6031d5d-90eb-44f7-96a8-db4a0ef6da72&quot;</span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="co">#&gt; [3] &quot;2aad2788-779c-48fb-86de-8dfd71222a2c&quot;</span></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="co">#&gt; $gained</span></span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="co">#&gt; character(0)</span></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="co">#&gt; $preserved</span></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co">#&gt; [1] &quot;e87304fc-09ed-4634-8caa-a9d9cf2352cc&quot;</span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">#&gt; [2] &quot;149ca4bd-d304-46a8-822b-fe344600d006&quot;</span></span></code></pre></div>
+<p>The comparison shows exactly which rows were lost (filtered out) and
+which were preserved.</p>
+</div>
+<div id="combining-data-with-id-handling" class="section level3">
+<h3>Combining data with ID handling</h3>
+<p>When appending new data, <code>bind_id()</code> handles ID
+conflicts:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>batch1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">|&gt;</span> <span class="fu">add_id</span>()</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>batch2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>)  <span class="co"># No IDs yet</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co"># bind_id assigns new IDs to batch2 and checks for conflicts</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>combined <span class="ot">&lt;-</span> <span class="fu">bind_id</span>(batch1, batch2)</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>combined</span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co">#&gt;                                    .id x</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#&gt; 1 beb82b30-6d2b-4a1a-a952-9b710fcf7f62 1</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#&gt; 2 766c5fb1-2c63-4b61-9ce3-c46a80e92cfa 2</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt; 3 7aac4ff0-a2f9-4965-abf1-7d1501bbf0b6 3</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt; 4 c42f55c3-c5d8-4f76-a95e-9303876450fd 4</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co">#&gt; 5 a4ab668b-4e54-4dc1-bdc2-21686e4944d6 5</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="co">#&gt; 6 30995197-d6a4-4938-8904-92358c8c7088 6</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="workflow-4-drift-detection" class="section level2">
+<h2>Workflow 4: Drift Detection</h2>
+<p><strong>Goal</strong>: Detect when data changes unexpectedly between
+pipeline runs.</p>
+<p><strong>Challenge</strong>: Reference data (lookup tables, dimension
+tables) changes upstream without notice. Your pipeline silently uses
+stale assumptions.</p>
+<p><strong>Strategy</strong>: Commit snapshots with
+<code>commit_keyed()</code> and check for drift with
+<code>check_drift()</code>.</p>
+<div id="commit-a-reference-snapshot" class="section level3">
+<h3>Commit a reference snapshot</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Commit current state as reference</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>reference_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="at">region_id =</span> <span class="fu">c</span>(<span class="st">&quot;US&quot;</span>, <span class="st">&quot;EU&quot;</span>, <span class="st">&quot;APAC&quot;</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  <span class="at">tax_rate =</span> <span class="fu">c</span>(<span class="fl">0.08</span>, <span class="fl">0.20</span>, <span class="fl">0.10</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>  <span class="fu">key</span>(region_id) <span class="sc">|&gt;</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>  <span class="fu">commit_keyed</span>()</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">#&gt; ✔ Snapshot committed: 76a76466...</span></span></code></pre></div>
+</div>
+<div id="check-for-drift" class="section level3">
+<h3>Check for drift</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># No changes yet</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">check_drift</span>(reference_data)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="co">#&gt; ── Drift Report</span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co">#&gt; ✔ No drift detected</span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co">#&gt; Snapshot: 76a76466... (2026-02-03 22:34)</span></span></code></pre></div>
+</div>
+<div id="detect-changes" class="section level3">
+<h3>Detect changes</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Simulate upstream change: EU tax rate changed</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>modified_data <span class="ot">&lt;-</span> reference_data</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>modified_data<span class="sc">$</span>tax_rate[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fl">0.21</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="co"># Drift detected!</span></span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="fu">check_drift</span>(modified_data)</span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="co">#&gt; ── Drift Report</span></span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a><span class="co">#&gt; ! Drift detected</span></span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="co">#&gt; Snapshot: 76a76466... (2026-02-03 22:34)</span></span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a><span class="co">#&gt; ℹ Key values changed</span></span>
+<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a><span class="co">#&gt; ℹ Cell values modified</span></span></code></pre></div>
+<p>The drift report shows exactly what changed, letting you decide
+whether to accept the new data or investigate.</p>
+</div>
+<div id="cleanup" class="section level3">
+<h3>Cleanup</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Remove snapshots when done</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">clear_all_snapshots</span>()</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co">#&gt; ! This will remove 1 snapshot(s) from cache.</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co">#&gt; ✔ Cleared 1 snapshot(s).</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="quick-reference" class="section level2">
+<h2>Quick Reference</h2>
+<div id="core-functions" class="section level3">
+<h3>Core Functions</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>key()</code></td>
+<td>Define key columns (validates uniqueness)</td>
+</tr>
+<tr class="even">
+<td><code>unkey()</code></td>
+<td>Remove key</td>
+</tr>
+<tr class="odd">
+<td><code>has_key()</code>, <code>get_key_cols()</code></td>
+<td>Query key status</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="assumption-checks" class="section level3">
+<h3>Assumption Checks</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Validates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>lock_unique()</code></td>
+<td>No duplicate values</td>
+</tr>
+<tr class="even">
+<td><code>lock_no_na()</code></td>
+<td>No missing values</td>
+</tr>
+<tr class="odd">
+<td><code>lock_complete()</code></td>
+<td>All expected values present</td>
+</tr>
+<tr class="even">
+<td><code>lock_coverage()</code></td>
+<td>Reference values covered</td>
+</tr>
+<tr class="odd">
+<td><code>lock_nrow()</code></td>
+<td>Row count within bounds</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="diagnostics" class="section level3">
+<h3>Diagnostics</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>diagnose_join()</code></td>
+<td>Analyze join cardinality</td>
+</tr>
+<tr class="even">
+<td><code>compare_keys()</code></td>
+<td>Compare key structures</td>
+</tr>
+<tr class="odd">
+<td><code>compare_ids()</code></td>
+<td>Compare row identities</td>
+</tr>
+<tr class="even">
+<td><code>find_duplicates()</code></td>
+<td>Find duplicate key values</td>
+</tr>
+<tr class="odd">
+<td><code>key_status()</code></td>
+<td>Quick status summary</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="row-identity" class="section level3">
+<h3>Row Identity</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>add_id()</code></td>
+<td>Add UUID to rows</td>
+</tr>
+<tr class="even">
+<td><code>get_id()</code></td>
+<td>Retrieve row IDs</td>
+</tr>
+<tr class="odd">
+<td><code>bind_id()</code></td>
+<td>Combine data with ID handling</td>
+</tr>
+<tr class="even">
+<td><code>make_id()</code></td>
+<td>Create deterministic IDs from columns</td>
+</tr>
+<tr class="odd">
+<td><code>check_id()</code></td>
+<td>Validate ID integrity</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="drift-detection" class="section level3">
+<h3>Drift Detection</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>commit_keyed()</code></td>
+<td>Save reference snapshot</td>
+</tr>
+<tr class="even">
+<td><code>check_drift()</code></td>
+<td>Compare against snapshot</td>
+</tr>
+<tr class="odd">
+<td><code>list_snapshots()</code></td>
+<td>View saved snapshots</td>
+</tr>
+<tr class="even">
+<td><code>clear_snapshot()</code></td>
+<td>Remove specific snapshot</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+</div>
+<div id="when-to-use-something-else" class="section level2">
+<h2>When to Use Something Else</h2>
+<p>keyed is designed for <strong>flat-file workflows</strong> without
+database infrastructure. If you need:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Need</th>
+<th>Better Alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Enforced schema</td>
+<td>Database (SQLite, DuckDB)</td>
+</tr>
+<tr class="even">
+<td>Version history</td>
+<td>Git, git2r</td>
+</tr>
+<tr class="odd">
+<td>Full data validation</td>
+<td>pointblank, validate</td>
+</tr>
+<tr class="even">
+<td>Production pipelines</td>
+<td>targets</td>
+</tr>
+</tbody>
+</table>
+<p>keyed fills a specific gap: lightweight key tracking for exploratory
+and semi-structured workflows where heavier tools add friction.</p>
+<hr />
+</div>
+<div id="see-also" class="section level2">
+<h2>See Also</h2>
+<ul>
+<li><p><a href="philosophy.html">Design Philosophy</a> - The reasoning
+behind keyed’s approach</p></li>
+<li><p><a href="https://gillescolling.com/keyed/reference/index.html">Function
+Reference</a> - Complete API documentation</p></li>
+</ul>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
