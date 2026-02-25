@@ -12,7 +12,7 @@
 
 <meta name="author" content="Gilles Colling" />
 
-<meta name="date" content="2026-02-03" />
+<meta name="date" content="2026-02-25" />
 
 <title>Quick Start</title>
 
@@ -341,7 +341,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Quick Start</h1>
 <h4 class="author">Gilles Colling</h4>
-<h4 class="date">2026-02-03</h4>
+<h4 class="date">2026-02-25</h4>
 
 
 
@@ -578,11 +578,11 @@ identifiers that survive transformations.</p>
 <span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co">#&gt; # Key:            customer_id | .id</span></span>
 <span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co">#&gt;   .id                                  customer_id name  tier  </span></span>
 <span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;                                      &lt;int&gt; &lt;chr&gt; &lt;chr&gt; </span></span>
-<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#&gt; 1 e87304fc-09ed-4634-8caa-a9d9cf2352cc           1 Alice gold  </span></span>
-<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#&gt; 2 d4c8b392-666d-43e1-8178-ce8e01efd218           2 Bob   silver</span></span>
-<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#&gt; 3 149ca4bd-d304-46a8-822b-fe344600d006           3 Carol gold  </span></span>
-<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co">#&gt; 4 d6031d5d-90eb-44f7-96a8-db4a0ef6da72           4 Dave  bronze</span></span>
-<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#&gt; 5 2aad2788-779c-48fb-86de-8dfd71222a2c           5 Eve   silver</span></span></code></pre></div>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#&gt; 1 cc1c041f-36df-4969-8fcb-94e34b25b93e           1 Alice gold  </span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#&gt; 2 4282e80e-fcca-4d24-b768-f96417cbf180           2 Bob   silver</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#&gt; 3 29175e2c-f4e9-40f1-aedd-a7166a5f5645           3 Carol gold  </span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co">#&gt; 4 16f6371c-e8dc-4225-b592-358d14f43e59           4 Dave  bronze</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#&gt; 5 cf103344-0480-41a0-af77-d8c038206c44           5 Eve   silver</span></span></code></pre></div>
 </div>
 <div id="ids-survive-transformations" class="section level3">
 <h3>IDs survive transformations</h3>
@@ -591,22 +591,22 @@ identifiers that survive transformations.</p>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">filter</span>(tier <span class="sc">==</span> <span class="st">&quot;gold&quot;</span>)</span>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a></span>
 <span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="fu">get_id</span>(gold_customers)</span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;e87304fc-09ed-4634-8caa-a9d9cf2352cc&quot;</span></span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="co">#&gt; [2] &quot;149ca4bd-d304-46a8-822b-fe344600d006&quot;</span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;cc1c041f-36df-4969-8fcb-94e34b25b93e&quot;</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="co">#&gt; [2] &quot;29175e2c-f4e9-40f1-aedd-a7166a5f5645&quot;</span></span>
 <span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a></span>
 <span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co"># Compare with original</span></span>
 <span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="fu">compare_ids</span>(customers_tracked, gold_customers)</span>
 <span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="co">#&gt; $lost</span></span>
-<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="co">#&gt; [1] &quot;d4c8b392-666d-43e1-8178-ce8e01efd218&quot;</span></span>
-<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="co">#&gt; [2] &quot;d6031d5d-90eb-44f7-96a8-db4a0ef6da72&quot;</span></span>
-<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="co">#&gt; [3] &quot;2aad2788-779c-48fb-86de-8dfd71222a2c&quot;</span></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="co">#&gt; [1] &quot;4282e80e-fcca-4d24-b768-f96417cbf180&quot;</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="co">#&gt; [2] &quot;16f6371c-e8dc-4225-b592-358d14f43e59&quot;</span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="co">#&gt; [3] &quot;cf103344-0480-41a0-af77-d8c038206c44&quot;</span></span>
 <span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="co">#&gt; $gained</span></span>
 <span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="co">#&gt; character(0)</span></span>
 <span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="co">#&gt; $preserved</span></span>
-<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co">#&gt; [1] &quot;e87304fc-09ed-4634-8caa-a9d9cf2352cc&quot;</span></span>
-<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">#&gt; [2] &quot;149ca4bd-d304-46a8-822b-fe344600d006&quot;</span></span></code></pre></div>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co">#&gt; [1] &quot;cc1c041f-36df-4969-8fcb-94e34b25b93e&quot;</span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">#&gt; [2] &quot;29175e2c-f4e9-40f1-aedd-a7166a5f5645&quot;</span></span></code></pre></div>
 <p>The comparison shows exactly which rows were lost (filtered out) and
 which were preserved.</p>
 </div>
@@ -621,12 +621,12 @@ conflicts:</p>
 <span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>combined <span class="ot">&lt;-</span> <span class="fu">bind_id</span>(batch1, batch2)</span>
 <span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>combined</span>
 <span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="co">#&gt;                                    .id x</span></span>
-<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#&gt; 1 beb82b30-6d2b-4a1a-a952-9b710fcf7f62 1</span></span>
-<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#&gt; 2 766c5fb1-2c63-4b61-9ce3-c46a80e92cfa 2</span></span>
-<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt; 3 7aac4ff0-a2f9-4965-abf1-7d1501bbf0b6 3</span></span>
-<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt; 4 c42f55c3-c5d8-4f76-a95e-9303876450fd 4</span></span>
-<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co">#&gt; 5 a4ab668b-4e54-4dc1-bdc2-21686e4944d6 5</span></span>
-<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="co">#&gt; 6 30995197-d6a4-4938-8904-92358c8c7088 6</span></span></code></pre></div>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">#&gt; 1 3a6b1134-5895-42a2-b5c3-533ab7abfbe5 1</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">#&gt; 2 b9d17be6-1a57-4b95-9f55-c517e67de2a0 2</span></span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a><span class="co">#&gt; 3 6505d674-9605-4eef-bada-9517ef47848c 3</span></span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="co">#&gt; 4 20d15e47-ce93-4494-84d0-ab986422ca2d 4</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="co">#&gt; 5 819b56ca-168b-4d65-8553-f976ace35070 5</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="co">#&gt; 6 4744e4b0-1b4e-443f-bff0-52b86ac97a30 6</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -637,9 +637,8 @@ pipeline runs.</p>
 <p><strong>Challenge</strong>: Reference data (lookup tables, dimension
 tables) changes upstream without notice. Your pipeline silently uses
 stale assumptions.</p>
-<p><strong>Strategy</strong>: Commit snapshots with
-<code>commit_keyed()</code> and check for drift with
-<code>check_drift()</code>.</p>
+<p><strong>Strategy</strong>: Commit snapshots with <code>stamp()</code>
+and check for drift with <code>check_drift()</code>.</p>
 <div id="commit-a-reference-snapshot" class="section level3">
 <h3>Commit a reference snapshot</h3>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Commit current state as reference</span></span>
@@ -648,7 +647,7 @@ stale assumptions.</p>
 <span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  <span class="at">tax_rate =</span> <span class="fu">c</span>(<span class="fl">0.08</span>, <span class="fl">0.20</span>, <span class="fl">0.10</span>)</span>
 <span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
 <span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>  <span class="fu">key</span>(region_id) <span class="sc">|&gt;</span></span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>  <span class="fu">commit_keyed</span>()</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>  <span class="fu">stamp</span>()</span>
 <span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">#&gt; ✔ Snapshot committed: 76a76466...</span></span></code></pre></div>
 </div>
 <div id="check-for-drift" class="section level3">
@@ -657,8 +656,8 @@ stale assumptions.</p>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">check_drift</span>(reference_data)</span>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="co">#&gt; ── Drift Report</span></span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co">#&gt; ✔ No drift detected</span></span>
-<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co">#&gt; Snapshot: 76a76466... (2026-02-03 22:34)</span></span></code></pre></div>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="co">#&gt; Snapshot: 76a76466... (2026-02-25 10:48)</span></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a><span class="co">#&gt; ✔ No drift detected</span></span></code></pre></div>
 </div>
 <div id="detect-changes" class="section level3">
 <h3>Detect changes</h3>
@@ -670,19 +669,48 @@ stale assumptions.</p>
 <span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="fu">check_drift</span>(modified_data)</span>
 <span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="co">#&gt; ── Drift Report</span></span>
-<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a><span class="co">#&gt; ! Drift detected</span></span>
-<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="co">#&gt; Snapshot: 76a76466... (2026-02-03 22:34)</span></span>
-<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a><span class="co">#&gt; ℹ Key values changed</span></span>
-<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a><span class="co">#&gt; ℹ Cell values modified</span></span></code></pre></div>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a><span class="co">#&gt; Snapshot: 76a76466... (2026-02-25 10:48)</span></span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="co">#&gt; ! Drift detected</span></span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a><span class="co">#&gt; ── Value Diff</span></span>
+<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a><span class="co">#&gt; Key: region_id</span></span>
+<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a><span class="co">#&gt; ! Modified: 1 row(s)</span></span>
+<span id="cb17-16"><a href="#cb17-16" tabindex="-1"></a><span class="co">#&gt; tax_rate: 1 change(s)</span></span>
+<span id="cb17-17"><a href="#cb17-17" tabindex="-1"></a><span class="co">#&gt; Unchanged: 2 row(s)</span></span></code></pre></div>
 <p>The drift report shows exactly what changed, letting you decide
 whether to accept the new data or investigate.</p>
 </div>
+<div id="row-level-diff" class="section level3">
+<h3>Row-level diff</h3>
+<p>For detailed cell-level comparison, use <code>diff()</code> on two
+keyed data frames:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>old_rates <span class="ot">&lt;-</span> <span class="fu">key</span>(<span class="fu">data.frame</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  <span class="at">region_id =</span> <span class="fu">c</span>(<span class="st">&quot;US&quot;</span>, <span class="st">&quot;EU&quot;</span>, <span class="st">&quot;APAC&quot;</span>),</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>  <span class="at">tax_rate  =</span> <span class="fu">c</span>(<span class="fl">0.08</span>, <span class="fl">0.20</span>, <span class="fl">0.10</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>), region_id)</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>new_rates <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>  <span class="at">region_id =</span> <span class="fu">c</span>(<span class="st">&quot;US&quot;</span>, <span class="st">&quot;EU&quot;</span>, <span class="st">&quot;APAC&quot;</span>, <span class="st">&quot;LATAM&quot;</span>),</span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>  <span class="at">tax_rate  =</span> <span class="fu">c</span>(<span class="fl">0.08</span>, <span class="fl">0.21</span>, <span class="fl">0.10</span>, <span class="fl">0.15</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>)</span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="fu">diff</span>(old_rates, new_rates)</span>
+<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co">#&gt; ── Value Diff</span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co">#&gt; Key: region_id</span></span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co">#&gt; ℹ Added: 1 row(s)</span></span>
+<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co">#&gt; ! Modified: 1 row(s)</span></span>
+<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a><span class="co">#&gt; tax_rate: 1 change(s)</span></span>
+<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a><span class="co">#&gt; Unchanged: 2 row(s)</span></span></code></pre></div>
+</div>
 <div id="cleanup" class="section level3">
 <h3>Cleanup</h3>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="co"># Remove snapshots when done</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">clear_all_snapshots</span>()</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="co">#&gt; ! This will remove 1 snapshot(s) from cache.</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="co">#&gt; ✔ Cleared 1 snapshot(s).</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Remove snapshots when done</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">clear_all_snapshots</span>()</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="co">#&gt; ! This will remove 1 snapshot(s) from cache.</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="co">#&gt; ✔ Cleared 1 snapshot(s).</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -823,7 +851,7 @@ whether to accept the new data or investigate.</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>commit_keyed()</code></td>
+<td><code>stamp()</code></td>
 <td>Save reference snapshot</td>
 </tr>
 <tr class="even">
@@ -831,10 +859,14 @@ whether to accept the new data or investigate.</p>
 <td>Compare against snapshot</td>
 </tr>
 <tr class="odd">
+<td><code>diff()</code></td>
+<td>Cell-level comparison of two data frames</td>
+</tr>
+<tr class="even">
 <td><code>list_snapshots()</code></td>
 <td>View saved snapshots</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>clear_snapshot()</code></td>
 <td>Remove specific snapshot</td>
 </tr>

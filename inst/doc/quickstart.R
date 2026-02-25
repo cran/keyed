@@ -138,7 +138,7 @@ reference_data <- data.frame(
   tax_rate = c(0.08, 0.20, 0.10)
 ) |>
   key(region_id) |>
-  commit_keyed()
+  stamp()
 
 ## -----------------------------------------------------------------------------
 # No changes yet
@@ -151,6 +151,19 @@ modified_data$tax_rate[2] <- 0.21
 
 # Drift detected!
 check_drift(modified_data)
+
+## -----------------------------------------------------------------------------
+old_rates <- key(data.frame(
+  region_id = c("US", "EU", "APAC"),
+  tax_rate  = c(0.08, 0.20, 0.10)
+), region_id)
+
+new_rates <- data.frame(
+  region_id = c("US", "EU", "APAC", "LATAM"),
+  tax_rate  = c(0.08, 0.21, 0.10, 0.15)
+)
+
+diff(old_rates, new_rates)
 
 ## -----------------------------------------------------------------------------
 # Remove snapshots when done

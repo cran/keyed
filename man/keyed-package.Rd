@@ -6,7 +6,7 @@
 \alias{keyed-package}
 \title{keyed: Explicit Key Assumptions for Flat-File Data}
 \description{
-Helps make implicit data assumptions explicit by attaching keys to flat-file data that error when those assumptions are violated. Designed for CSV-first workflows without database infrastructure or version control. Provides key definition, assumption checks, join diagnostics, and optional drift detection against reference snapshots.
+Helps make implicit data assumptions explicit by attaching keys to flat-file data that error when those assumptions are violated. Designed for CSV-first workflows without database infrastructure or version control. Provides key definition, assumption checks, join diagnostics, and automatic drift detection via watched data frames that snapshot before each transformation and report cell-level changes.
 }
 \seealso{
 Useful links:
